@@ -26,31 +26,31 @@
       <div style="font-size: 1.3em;" class="my-4 d-flex flex-end w-100 overflow-auto">
         <div class="form-check me-4">
           <input class="form-check-input" type="checkbox"
-            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="surveys.includes(43)"
-            value=43 id="43">
+            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="hasArray(43)" value=43
+            id="43">
           <label class="form-check-label" for="43">
             43
           </label>
         </div>
         <div class="form-check me-4">
           <input class="form-check-input" type="checkbox"
-            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="surveys.includes(44)"
-            value=44 id="44">
+            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="hasArray(44)" value=44
+            id="44">
           <label class="form-check-label" for="44">
             44
           </label>
         </div>
         <div class="form-check me-4">
           <input class="form-check-input" type="checkbox"
-            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="surveys.includes(45)"
-            value=45 id="45">
+            (change)="addRemoveArray(1,$event.target.checked,$event.target.value)" [checked]="hasArray(45)" value=45
+            id="45">
           <label class="form-check-label" for="45">
             45
           </label>
         </div>
         <div class="form-check me-4">
           <input class="form-check-input" (change)="addRemoveArray(1,$event.target.checked,$event.target.value)"
-            [checked]="surveys.includes(46)" type="checkbox" [checked]="surveys.includes(46)" value=46 id="46">
+            type="checkbox" [checked]="hasArray(46)" value=46 id="46">
           <label class="form-check-label" for="46">
             46
           </label>
@@ -68,6 +68,10 @@
             Only Aashiyana
           </label>
         </div>
+        <div class="col-auto">
+          <button type="button" (click)="setDefaults()" class="btn btn-primary w-100">
+            Clear</button>
+        </div>
       </div>
       <table class="table table-bordered mt-5">
         <thead>
@@ -75,10 +79,10 @@
             <th scope="col" *ngFor="let key of heading">{{key}}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="position-relative">
           <ng-container *ngFor="let yr of years;let j=index">
             <ng-container
-              *ngFor="let detail of sortData(yr)| filter:term |filterData:isaash:surveys:filters;let i=index;let c=count">
+              *ngFor="let detail of sortData(yr)| filter:term |filterData:isaash:surveys:filters:isStrict;let i=index;let c=count">
               <tr *ngIf="i==0" style="cursor: pointer;text-decoration: underline;" data-toggle="collapse"
                 attr.data-target="#collapseRow{{yr}}" colspan="100%" class="card-header accordion-toggle my-2">
                 <td colspan="100%">

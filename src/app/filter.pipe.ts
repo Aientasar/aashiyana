@@ -15,10 +15,19 @@ export class FilterPipe implements PipeTransform {
         return false;
       }
       for (let elem of args[2]) {
-        elem = elem.toString();
-        if (!value.dop.toLowerCase().includes(elem) && !value.parties.toLowerCase().includes(elem) && !value.date.toLowerCase().includes(elem) && !value.value.toLowerCase().includes(elem)) {
-          return false;
+        elem = elem.toString().toLowerCase();
+        if (args[3]) {
+          // console.log(args[3]);
+          // if (value.dop.toLowerCase() == elem || value.parties.toLowerCase() == elem || value.date.toLowerCase() == elem || value.value.toLowerCase() == elem) {
+          //   return false;
+          // }
+        } else {
+          if (!value.dop.toLowerCase().includes(elem) && !value.parties.toLowerCase().includes(elem) && !value.date.toLowerCase().includes(elem) && !value.value.toLowerCase().includes(elem)) {
+            return false;
+          }
         }
+
+
       }
       return true;
     });

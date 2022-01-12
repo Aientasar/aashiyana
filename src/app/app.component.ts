@@ -8,6 +8,8 @@ import masterJson from '../assets/csvjson.json'
 })
 export class AppComponent implements OnInit {
 
+  public isLoading = false;
+
   masterData = [];
   surveys = [];
 
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
   term: string;
   collapseAll = false;
   isaash = false;
+  isStrict = false;
 
 
   constructor(private cdr: ChangeDetectorRef) { }
@@ -64,6 +67,21 @@ export class AppComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  hasArray(val) {
+    return this.surveys.includes(val.toString());
+  }
+
+  setDefaults() {
+    this.filters = [];
+    this.surveys = [];
+    this.collapseAll = false;
+    this.isaash = false;
+    this.isStrict = false;
+    this.cdr.detectChanges();
+    console.log(this.surveys);
+
   }
 }
 
