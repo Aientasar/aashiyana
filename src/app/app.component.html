@@ -86,7 +86,8 @@
                   <label>Total Transactions : {{c}}</label>
                 </td>
               </tr>
-              <tr class="accordian-body collapse show" [class.show]="!collapseAll" attr.id="collapseRow{{yr}}">
+              <tr class="accordian-body collapse show" [class.own]="isOwn(detail)" [class.show]="!collapseAll"
+                attr.id="collapseRow{{yr}}">
                 <td scope="rows">{{i+1}}</td>
                 <td>{{detail.dop}}</td>
                 <td>{{detail.date}}</td>

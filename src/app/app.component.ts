@@ -59,6 +59,11 @@ export class AppComponent implements OnInit {
       arr == 1 ? this.surveys = this.surveys.filter(item => item !== val) : this.filters = this.filters.filter(item => item !== val)
   }
 
-
+  isOwn(value) {
+    if (!value.dop.toLowerCase().includes('aash') && !value.parties.toLowerCase().includes('aash') && !value.dop.toLowerCase().includes('sha') && !value.parties.toLowerCase().includes('sha')) {
+      return false;
+    }
+    return true;
+  }
 }
 
